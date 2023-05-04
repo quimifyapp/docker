@@ -1,11 +1,11 @@
 FROM python:3
 
-ADD api.py api.py
-ADD model.py model.py
+ADD build/api.py api.py
+ADD build/model.py model.py
 
-COPY models /models/
+COPY build/models/ models/
 
-COPY requirements.txt .
+COPY build/requirements.txt requirements.txt
 
 RUN pip install --no-cache-dir -r requirements.txt # To install dependencies
 

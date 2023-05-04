@@ -1,5 +1,5 @@
 FROM openjdk:11
-ADD quimify-api-5.jar quimify-api-5.jar
+ADD build/quimify-api-5.jar quimify-api-5.jar
 EXPOSE 8085
-ENTRYPOINT ["java", "-jar", "/quimify-api-5.jar"]
+ENTRYPOINT ["java", "-jar", "quimify-api-5.jar"]
 ENV TZ=Europe/Madrid
