@@ -18,3 +18,5 @@ tar czf "$BACKUP_FILENAME" $DIRECTORIES
 # Move the backup file to the directory where this script is located
 mkdir /home/ubuntu/docker/volume-backups/
 mv "$BACKUP_FILENAME" "/home/ubuntu/docker/volume-backups/"
+
+echo "Done! Remember to delete the volume-backups/ directory."
