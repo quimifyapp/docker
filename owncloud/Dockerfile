@@ -1,0 +1,22 @@
+FROM owncloud/server:latest
+
+EXPOSE 8080
+
+# Fill manually (for security reasons):
+ENV OWNCLOUD_ADMIN_PASSWORD=
+ENV OWNCLOUD_DB_PASSWORD=
+
+ENV OWNCLOUD_DOMAIN=cloud.quimify.com
+ENV OWNCLOUD_TRUSTED_DOMAINS=cloud.quimify.com
+
+ENV OWNCLOUD_ADMIN_USERNAME=quimify
+
+ENV OWNCLOUD_DB_TYPE=mysql
+ENV OWNCLOUD_DB_NAME=owncloud
+ENV OWNCLOUD_DB_USERNAME=owncloud
+ENV OWNCLOUD_DB_HOST=mysql-container:mysql
+ENV OWNCLOUD_MYSQL_UTF8MB4=true
+ENV OWNCLOUD_REDIS_ENABLED=false
+
+
+
