@@ -22,6 +22,7 @@ docker run -d --name datadog-container \
     --cap-add=NET_RAW \
     --cap-add=IPC_LOCK \
     --cap-add=CHOWN \
+	--restart unless-stopped \
     datadog-image
 
 docker logs datadog-container -f
