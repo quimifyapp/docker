@@ -4,7 +4,10 @@ docker run -d --name datadog-container \
     --restart unless-stopped \
     -v datadog-volume:/var/log/datadog \
     -v datadog-volume:/var/run/s6 \
-    -v /var/run/docker.sock:/var/run/docker.sock \
+    -v /proc/:/host/proc/:ro \
+    -v /sys/fs/cgroup/:/host/sys/fs/cgroup:ro \ # So it can read RAM usage data
+    -v /etc/os-release:/host/etc/os-release:ro \ # So it can read RAM usage data
+    -v /var/run/docker.sock:/var/run/docker.sock \ # Needed for some unknown reason
 	-e DD_REMOTE_CONFIGURATION_ENABLED=true \
 	-e DD_LOGS_ENABLED=true \
     -e DD_SYSTEM_PROBE_NETWORK_ENABLED=true \
