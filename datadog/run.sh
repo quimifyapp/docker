@@ -1,13 +1,17 @@
 docker image build -t datadog-image .
 
+# So it can read RAM usage data: -v /sys/fs/cgroup/:/host/sys/fs/cgroup:ro \ 
+# So it can read RAM usage data: -v /etc/os-release:/host/etc/os-release:ro \  
+# Needed for some unknown reason: -v /var/run/docker.sock:/var/run/docker.sock \ 
+
 docker run -d --name datadog-container \
     --restart unless-stopped \
     -v datadog-volume:/var/log/datadog \
     -v datadog-volume:/var/run/s6 \
     -v /proc/:/host/proc/:ro \
-    -v /sys/fs/cgroup/:/host/sys/fs/cgroup:ro \ # So it can read RAM usage data
-    -v /etc/os-release:/host/etc/os-release:ro \ # So it can read RAM usage data
-    -v /var/run/docker.sock:/var/run/docker.sock \ # Needed for some unknown reason
+    -v /sys/fs/cgroup/:/host/sys/fs/cgroup:ro \
+    -v /etc/os-release:/host/etc/os-release:ro \
+    -v /var/run/docker.sock:/var/run/docker.sock \
 	-e DD_REMOTE_CONFIGURATION_ENABLED=true \
 	-e DD_LOGS_ENABLED=true \
     -e DD_SYSTEM_PROBE_NETWORK_ENABLED=true \
