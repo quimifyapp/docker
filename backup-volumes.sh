@@ -12,11 +12,16 @@ cd /var/lib/docker/volumes/
 # Create a list of all directories inside /var/lib/docker/volumes/
 DIRECTORIES=$(ls -d */)
 
+echo
+echo "Creating backup... Watch out for possible errors:"
+echo
+
 # Create a tar archive of the directories and compress it
 tar czf "$BACKUP_FILENAME" $DIRECTORIES
 
 # Move the backup file to the directory where this script is located
-mkdir /home/ubuntu/docker/volume-backups/
-mv "$BACKUP_FILENAME" "/home/ubuntu/docker/volume-backups/"
+mv "$BACKUP_FILENAME" "/home/ubuntu/docker/"
 
-echo "Done! Remember to delete the volume-backups/ directory."
+echo
+echo "Backup done! Don't forget to move it."
+echo
