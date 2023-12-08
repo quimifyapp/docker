@@ -1,4 +1,4 @@
-FROM python:3
+FROM python:3.8
 
 ADD build/api.py api.py
 ADD build/model.py model.py
